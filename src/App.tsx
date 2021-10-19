@@ -1,20 +1,23 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import List from './pages/List';
-import Task from './pages/Task';
+import Tasks from './pages/Tasks';
+import Home from './pages/Home';
+import NavBar from './nav/NavBar';
 
 function App() {
   return (
       <BrowserRouter>
+      <NavBar/>
         <Switch>
           <Route exact path="/">
-            <div>Home Page</div>
+            <Home/>
           </Route>
           <Route path="/list">
             <List />
           </Route>
-          <Route path="/task">
-            <Task />
+          <Route path="/tasks">
+            <Tasks />
           </Route>
         </Switch>
       </BrowserRouter>
