@@ -41,4 +41,3 @@ Building a basic todo list using React, React Hooks, TypeScript, and Material UI
 - [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/react.html)
 
 - [YouTube Tutorial with Kevin Wade](https://www.youtube.com/watch?v=CUyl3LdBvGU)
-
