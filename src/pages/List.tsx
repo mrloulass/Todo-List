@@ -1,7 +1,6 @@
 import { nanoid } from 'nanoid';
 import React, {
   ChangeEvent,
-  ChangeEventHandler,
   MouseEvent,
   useState,
 } from 'react';
@@ -30,7 +29,7 @@ const List: React.FC<Props> = () => {
     setNewTaskLabel('');
   };
 
-  const handleCompleteChange =
+  const handleTaskCompleteChange =
     (handledTask: TodoTask) => (e: ChangeEvent<HTMLInputElement>) => {
       setTasks((tasks) =>
         tasks.map((task) => {
@@ -39,6 +38,10 @@ const List: React.FC<Props> = () => {
           return task;
         })
       );
+    };
+
+    const handleTaskDeleteClick = (handledTask: TodoTask) => () => {
+      setTasks(tasks => tasks.filter(task => task.id !== handledTask.id));
     };
 
     const handleClearClick = () => {
@@ -54,9 +57,10 @@ const List: React.FC<Props> = () => {
             <input
               type="checkbox"
               checked={task.completed}
-              onChange={handleCompleteChange(task)}
-            />
+              onChange={handleTaskCompleteChange(task)}
+            />{' '}
             {task.label}
+            <button onClick={handleTaskDeleteClick(task)}>Delete</button>
           </div>
         ))}
       <button onClick={handleClearClick}>Clear Completed Task</button>
