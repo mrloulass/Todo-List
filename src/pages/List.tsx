@@ -1,20 +1,10 @@
 import { nanoid } from 'nanoid';
-import React, {
-  ChangeEvent,
-  MouseEvent,
-  useState,
-} from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import { TasksProps, TodoTask } from '../types';
 
-type Props = {};
+type Props = TasksProps & {};
 
-type TodoTask = {
-  id: string;
-  label: string;
-  completed: boolean;
-};
-
-const List: React.FC<Props> = () => {
-  const [tasks, setTasks] = useState<TodoTask[]>([]);
+const List: React.FC<Props> = ({ tasks, setTasks }) => {
   const [newTaskLabel, setNewTaskLabel] = useState('');
 
   const handleNewTaskLabelChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -40,13 +30,13 @@ const List: React.FC<Props> = () => {
       );
     };
 
-    const handleTaskDeleteClick = (handledTask: TodoTask) => () => {
-      setTasks(tasks => tasks.filter(task => task.id !== handledTask.id));
-    };
+  const handleTaskDeleteClick = (handledTask: TodoTask) => () => {
+    setTasks((tasks) => tasks.filter((task) => task.id !== handledTask.id));
+  };
 
-    const handleClearClick = () => {
-      setTasks(tasks => tasks.filter(task => !task.completed))
-    }
+  const handleClearClick = () => {
+    setTasks((tasks) => tasks.filter((task) => !task.completed));
+  };
 
   return (
     <div>
@@ -63,12 +53,9 @@ const List: React.FC<Props> = () => {
             <button onClick={handleTaskDeleteClick(task)}>Delete</button>
           </div>
         ))}
-      <button onClick={handleClearClick}>Clear Completed Task</button>
+        <button onClick={handleClearClick}>Clear Completed Task</button>
       </div>
-      <input 
-      value={newTaskLabel} 
-      onChange={handleNewTaskLabelChange} 
-      />
+      <input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
       <button onClick={handleAddTask}>Add Task</button>
     </div>
   );
