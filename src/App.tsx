@@ -5,21 +5,49 @@ import Tasks from './pages/TaskScreen';
 import Home from './pages/Home';
 import NavBar from './nav/NavBar';
 import { TodoTask } from './types';
+import { shuffle } from 'lodash';
+import { nanoid } from 'nanoid';
 
 function App() {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
+  const [selectedTaskId, setSelectedTaskId] = useState<string | undefined>(
+    undefined
+  );
 
-    const tasksCompletion = (taskId: string, completed: boolean) => {
-      setTasks((tasks) =>
-        tasks.map((task) => {
-          if (task.id === taskId)
-            return { ...task, completed };
-          return task;
-        })
-      );
-    };
+  const addTask = (task: Pick<TodoTask, 'label'>) => {
+    const id = nanoid();
+    setTasks((tasks) => [
+      ...tasks,
+      { id, label: task.label, completed: false },
+    ]);
+    if (!selectedTaskId) setSelectedTaskId (id)
+  };
 
-  const tasksApi = { tasks, setTasks, tasksCompletion };
+  const tasksCompletion = (taskId: string, completed: boolean) => {
+    setTasks((tasks) =>
+      tasks.map((task) => {
+        if (task.id === taskId) return { ...task, completed };
+        return task;
+      })
+    );
+  };
+
+  const selectedTask = tasks.find((task) => task.id === selectedTaskId);
+
+  const shuffleTask = () => {
+    setSelectedTaskId(
+      shuffle(tasks.filter((task) => !task.completed))[0]?.id ?? undefined
+    );
+  };
+
+  const tasksApi = {
+    addTask,
+    selectedTask,
+    tasks,
+    setTasks,
+    shuffleTask,
+    tasksCompletion,
+  };
 
   return (
     <BrowserRouter>
