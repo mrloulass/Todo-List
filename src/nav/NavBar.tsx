@@ -15,7 +15,7 @@ const NavBar: React.FC<Props> = () => {
         </NavLink>{' '}
         -{' '}
         <NavLink to="/tasks" activeStyle={{ fontWeight: 'bold' }}>
-          Tasks
+          Task
         </NavLink>
       </nav>
     </div>

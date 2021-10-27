@@ -4,7 +4,7 @@ import { TasksProps, TodoTask } from '../types';
 
 type Props = TasksProps & {};
 
-const List: React.FC<Props> = ({ tasks, setTasks }) => {
+const List: React.FC<Props> = ({ tasks, setTasks, tasksCompletion }) => {
   const [newTaskLabel, setNewTaskLabel] = useState('');
 
   const handleNewTaskLabelChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -20,14 +20,8 @@ const List: React.FC<Props> = ({ tasks, setTasks }) => {
   };
 
   const handleTaskCompleteChange =
-    (handledTask: TodoTask) => (e: ChangeEvent<HTMLInputElement>) => {
-      setTasks((tasks) =>
-        tasks.map((task) => {
-          if (task.id === handledTask.id)
-            return { ...task, completed: e.target.checked };
-          return task;
-        })
-      );
+    (task: TodoTask) => (e: ChangeEvent<HTMLInputElement>) => {
+      tasksCompletion(task.id, e.target.checked);
     };
 
   const handleTaskDeleteClick = (handledTask: TodoTask) => () => {
