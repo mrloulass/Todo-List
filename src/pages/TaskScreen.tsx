@@ -3,11 +3,17 @@ import { TasksProps } from '../types';
 
 type Props = TasksProps & {};
 
-const TasksScreen: React.FC<Props> = ({ tasks, tasksCompletion }) => {
-  const task = tasks.filter((task) => !task.completed)[0];
-
+const TasksScreen: React.FC<Props> = ({
+  selectedTask: task,
+  shuffleTask,
+  tasksCompletion,
+}) => {
   const handleMarkCompleted = () => {
-    tasksCompletion(task.id, true);
+    if (task) tasksCompletion(task.id, true);
+  };
+
+  const handleClickNextTask = () => {
+    shuffleTask();
   };
 
   return (
@@ -17,6 +23,7 @@ const TasksScreen: React.FC<Props> = ({ tasks, tasksCompletion }) => {
         <div>
           <div>{task.label}</div>
           <button onClick={handleMarkCompleted}>Mark Completed</button>
+          <button onClick={handleClickNextTask}>Next</button>
         </div>
       ) : (
         <div> No Task Listed</div>

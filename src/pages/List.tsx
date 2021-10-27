@@ -1,22 +1,24 @@
-import { nanoid } from 'nanoid';
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { TasksProps, TodoTask } from '../types';
 
 type Props = TasksProps & {};
 
-const List: React.FC<Props> = ({ tasks, setTasks, tasksCompletion }) => {
+const List: React.FC<Props> = ({
+  addTask,
+  tasks,
+  setTasks,
+  tasksCompletion,
+}) => {
   const [newTaskLabel, setNewTaskLabel] = useState('');
 
   const handleNewTaskLabelChange = (e: ChangeEvent<HTMLInputElement>) =>
     setNewTaskLabel(e.target.value);
 
   const handleAddTask = (e: MouseEvent<HTMLButtonElement>) => {
-    if (e.target && newTaskLabel !== '')
-      setTasks((tasks) => [
-        ...tasks,
-        { id: nanoid(), label: newTaskLabel, completed: false },
-      ]);
+    if (e.target && newTaskLabel !== ''){
+      addTask({ label: newTaskLabel });
     setNewTaskLabel('');
+    }
   };
 
   const handleTaskCompleteChange =
