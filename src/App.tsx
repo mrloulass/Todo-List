@@ -7,11 +7,12 @@ import NavBar from './nav/NavBar';
 import { TodoTask } from './types';
 import { shuffle } from 'lodash';
 import { nanoid } from 'nanoid';
+import useLocalStorage from './hooks/local-storage';
 
 function App() {
-  const [tasks, setTasks] = useState<TodoTask[]>([]);
+  const [tasks, setTasks] = useLocalStorage<TodoTask[]>('tasks',[]);
   const [selectedTaskId, setSelectedTaskId] = useState<string | undefined>(
-    undefined
+   undefined
   );
 
   const addTask = (task: Pick<TodoTask, 'label'>) => {
