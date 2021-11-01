@@ -1,5 +1,5 @@
 import { TodoTask } from '../types';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { shuffle } from 'lodash';
 import { nanoid } from 'nanoid';
 import TaskContext from '../contexts/task-store';
@@ -8,8 +8,9 @@ import TaskContext from '../contexts/task-store';
 
 const useTaskStore = () => {
   const [tasks, setTasks] = useContext(TaskContext);
+
   const [selectedTaskId, setSelectedTaskId] = useState<string | undefined>(
-    undefined
+    tasks.filter((task) => !task.completed)[0]?.id
   );
 
   const addTask = (task: Pick<TodoTask, 'label'>) => {
@@ -32,6 +33,11 @@ const useTaskStore = () => {
 
   const selectedTask = tasks.find((task) => task.id === selectedTaskId);
 
+  useEffect(() => {
+    if (selectedTask?.completed)
+      setSelectedTaskId(tasks.filter((task) => !task.completed)[0]?.id);
+  }, [tasks, selectedTask]);
+
   const shuffleTask = () => {
     setSelectedTaskId(
       shuffle(tasks.filter((task) => !task.completed))[0]?.id ?? undefined
@@ -48,5 +54,4 @@ const useTaskStore = () => {
   };
   return tasksApi;
 };
-
 export default useTaskStore;
