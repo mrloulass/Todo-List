@@ -17,6 +17,12 @@ const List: React.FC<Props> = () => {
     setNewTaskLabel('');
     }
   };
+  // const handleKeyPress = (e:KeyboardEvent<HTMLInputElement>) => {
+  //   if(e.key === 'Enter' && newTaskLabel !== ''){
+  //     addTask({label: newTaskLabel});
+  //     setNewTaskLabel('');
+  //   }
+  // };
 
   const handleTaskCompleteChange =
     (task: TodoTask) => (e: ChangeEvent<HTMLInputElement>) => {
