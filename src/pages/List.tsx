@@ -1,14 +1,11 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
-import { TasksProps, TodoTask } from '../types';
+import { TodoTask } from '../types';
+import useTaskStore from '../hooks/use-task-store'
 
-type Props = TasksProps & {};
+type Props = {};
 
-const List: React.FC<Props> = ({
-  addTask,
-  tasks,
-  setTasks,
-  tasksCompletion,
-}) => {
+const List: React.FC<Props> = () => {
+  const { addTask, tasks, setTasks, tasksCompletion } = useTaskStore();
   const [newTaskLabel, setNewTaskLabel] = useState('');
 
   const handleNewTaskLabelChange = (e: ChangeEvent<HTMLInputElement>) =>

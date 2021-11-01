@@ -1,6 +1,8 @@
-import { createContext } from 'react';
+import React, { createContext } from 'react';
 import { TodoTask } from '../types';
 
-const TaskContext = createContext<TodoTask[]>([])
+const TaskContext = createContext<
+  [TodoTask[], React.Dispatch<React.SetStateAction<TodoTask[]>>]
+>([[], () => {}]);
 
 export default TaskContext;
