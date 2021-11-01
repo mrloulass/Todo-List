@@ -1,13 +1,10 @@
 import React from 'react';
-import { TasksProps } from '../types';
+import useTaskStore from '../hooks/use-task-store';
 
-type Props = TasksProps & {};
+type Props = {};
 
-const TasksScreen: React.FC<Props> = ({
-  selectedTask: task,
-  shuffleTask,
-  tasksCompletion,
-}) => {
+const TasksScreen: React.FC<Props> = () => {
+  const { selectedTask: task, shuffleTask, tasksCompletion } = useTaskStore();
   const handleMarkCompleted = () => {
     if (task) tasksCompletion(task.id, true);
   };
