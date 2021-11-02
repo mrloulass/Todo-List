@@ -1,6 +1,6 @@
 # Todo-List
 
-Building a basic todo list using React, React Hooks, TypeScript, and Material UI
+Building a basic todo list using React, React Hooks, TypeScript, and Styled-Components
 
 ## 🚀 Getting Started
 
@@ -25,12 +25,19 @@ Building a basic todo list using React, React Hooks, TypeScript, and Material UI
 
 ## 📦 Dependencies
 
-- [Material UI](https://material-ui.com/)
+- [Styled-Components](https://styled-components.com/docs)
+
 - [React](https://reactjs.org/docs/getting-started.html)
+
 - [React Router DOM](https://reactrouter.com/web/guides/quick-start)
+
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 
 - [TypeScript](https://www.typescriptlang.org/docs/)
+
+- [Lodash](https://lodash.com/)
+
+- [Nanoid](https://github.com/ai/nanoid)
 
 ## 🔍 Resources
 
@@ -41,3 +48,4 @@ Building a basic todo list using React, React Hooks, TypeScript, and Material UI
 - [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/react.html)
 
 - [YouTube Tutorial with Kevin Wade](https://www.youtube.com/watch?v=CUyl3LdBvGU)
+
