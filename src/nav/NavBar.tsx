@@ -1,23 +1,56 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import {colors} from '../styles/colors'
 type Props = {};
+
+const Nav = styled.nav`
+  display: flex;
+`;
+
+const NavButton = styled(NavLink)`
+  background: ${colors.white};
+  color: ${colors.black};
+  height: 62px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  
+  &.homeButton {
+    background: ${colors.blue};
+    color: ${colors.white};
+  }
+  &.listButton {
+    background: ${colors.mint};
+    color: ${colors.white};
+  }
+  &.taskButton {
+    background: ${colors.pink};
+    color: ${colors.white};
+  }
+
+  &.active {
+    background: ${colors.yellow};
+    color: ${colors.black};
+  }
+`;
 
 const NavBar: React.FC<Props> = () => {
   return (
     <div>
-      <nav>
-        <NavLink exact to="/" activeStyle={{ fontWeight: 'bold' }}>
+      <Nav>
+        <NavButton exact to="/" activeClassName="active" className="homeButton">
           Home
-        </NavLink>{' '}
-        -{' '}
-        <NavLink to="/list" activeStyle={{ fontWeight: 'bold' }}>
+        </NavButton>
+        <NavButton to="/list" activeClassName="active" className="listButton">
           List
-        </NavLink>{' '}
-        -{' '}
-        <NavLink to="/tasks" activeStyle={{ fontWeight: 'bold' }}>
+        </NavButton>
+        <NavButton to="/tasks" activeClassName="active" className="taskButton">
           Task
-        </NavLink>
-      </nav>
+        </NavButton>
+      </Nav>
     </div>
   );
 };
