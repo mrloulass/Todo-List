@@ -1,7 +1,7 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { TodoTask } from '../types';
 import useTaskStore from '../hooks/use-task-store';
-import { Container } from '../styles/ListStyle';
+import { ListContainer, ListLayout } from '../styles/ListStyle';
 
 type Props = {};
 
@@ -33,8 +33,8 @@ const List: React.FC<Props> = () => {
   };
 
   return (
-    <div>
-      <Container>
+    <ListLayout>
+      <ListContainer>
         {tasks.map((task) => (
           <div key={task.id}>
             <input
@@ -46,11 +46,11 @@ const List: React.FC<Props> = () => {
             <button onClick={handleTaskDeleteClick(task)}>Delete</button>
           </div>
         ))}
+        <input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
+        <button onClick={handleAddTask}>Add Task</button>
         <button onClick={handleClearClick}>Clear Completed Task</button>
-      </Container>
-      <input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
-      <button onClick={handleAddTask}>Add Task</button>
-    </div>
+      </ListContainer>
+    </ListLayout>
   );
 };
 

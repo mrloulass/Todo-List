@@ -3,8 +3,8 @@ import {colors} from './colors'
 
 export const GlobalStyle = createGlobalStyle`
 body{
-  background-color: ${colors.darkBlue};
-  color: ${colors.white}
-  
+  background-color: ${colors.black};
+  color: ${colors.white};
+  padding: 95px;
 }
-`
+`;
