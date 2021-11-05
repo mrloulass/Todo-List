@@ -1,6 +1,7 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { TodoTask } from '../types';
-import useTaskStore from '../hooks/use-task-store'
+import useTaskStore from '../hooks/use-task-store';
+import { Container } from '../styles/ListStyle';
 
 type Props = {};
 
@@ -12,17 +13,11 @@ const List: React.FC<Props> = () => {
     setNewTaskLabel(e.target.value);
 
   const handleAddTask = (e: MouseEvent<HTMLButtonElement>) => {
-    if (e.target && newTaskLabel !== ''){
+    if (e.target && newTaskLabel !== '') {
       addTask({ label: newTaskLabel });
-    setNewTaskLabel('');
+      setNewTaskLabel('');
     }
   };
-  // const handleKeyPress = (e:KeyboardEvent<HTMLInputElement>) => {
-  //   if(e.key === 'Enter' && newTaskLabel !== ''){
-  //     addTask({label: newTaskLabel});
-  //     setNewTaskLabel('');
-  //   }
-  // };
 
   const handleTaskCompleteChange =
     (task: TodoTask) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,8 +34,7 @@ const List: React.FC<Props> = () => {
 
   return (
     <div>
-      <h2>List</h2>
-      <div>
+      <Container>
         {tasks.map((task) => (
           <div key={task.id}>
             <input
@@ -53,7 +47,7 @@ const List: React.FC<Props> = () => {
           </div>
         ))}
         <button onClick={handleClearClick}>Clear Completed Task</button>
-      </div>
+      </Container>
       <input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
       <button onClick={handleAddTask}>Add Task</button>
     </div>

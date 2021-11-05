@@ -15,7 +15,6 @@ const TasksScreen: React.FC<Props> = () => {
 
   return (
     <div>
-      <h2>Task</h2>
       {task ? (
         <div>
           <div>{task.label}</div>

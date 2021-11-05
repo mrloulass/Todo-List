@@ -7,14 +7,19 @@ import NavBar from './nav/NavBar';
 import TaskContext from './contexts/task-store';
 import { TodoTask } from './types';
 import useLocalStorage from './hooks/use-local-storage';
+import { GlobalStyle } from './styles/GlobalStyle';
+import { Layout } from './styles/Layout';
 
 function App() {
   const [tasks, setTasks] = useLocalStorage<TodoTask[]>('tasks', []);
 
   return (
-    <BrowserRouter>
-      <TaskContext.Provider value={[tasks, setTasks]}>
-        <NavBar />
+    <>
+      <GlobalStyle />
+      <BrowserRouter>
+        <TaskContext.Provider value={[tasks, setTasks]}>
+          <Layout>
+          <NavBar />
           <Switch>
             <Route exact path="/">
               <Home />
@@ -26,8 +31,10 @@ function App() {
               <Tasks />
             </Route>
           </Switch>
-      </TaskContext.Provider>
-    </BrowserRouter>
+          </Layout>
+        </TaskContext.Provider>
+      </BrowserRouter>
+    </>
   );
 }
 

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export const Nav = styled.nav`
   display: flex;
+  margin-bottom: 45px;
 `;
 
 export const NavButton = styled(NavLink)`
@@ -15,6 +16,7 @@ export const NavButton = styled(NavLink)`
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  /* box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 1); */
 
   &.homeButton {
     background: ${colors.blue};
@@ -36,6 +38,6 @@ export const NavButton = styled(NavLink)`
   &.active {
     background: ${colors.yellow};
     color: ${colors.black};
-    box-shadow: 0px 10px 12px 1px rgba(0, 0, 0, .75);
+    box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 1);
   }
 `;
