@@ -5,7 +5,7 @@ export const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 35px 35px 150px 35px;
+  padding: 35px ;
   background: ${colors.darkBlue};
   width: auto;
   border: solid 1px ${colors.blue};

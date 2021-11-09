@@ -2,6 +2,9 @@ import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { TodoTask } from '../types';
 import useTaskStore from '../hooks/use-task-store';
 import { ListContainer, ListLayout } from '../styles/ListStyle';
+import {AddButton, TextButton} from '../styles/ButtonStyles';
+import Input from '../styles/InputStyle';
+import Spacer from '../styles/Spacer';
 
 type Props = {};
 
@@ -46,10 +49,13 @@ const List: React.FC<Props> = () => {
             <button onClick={handleTaskDeleteClick(task)}>Delete</button>
           </div>
         ))}
-        <input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
-        <button onClick={handleAddTask}>Add Task</button>
-        <button onClick={handleClearClick}>Clear Completed Task</button>
       </ListContainer>
+      <Spacer height={30}/>
+        <Input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
+        <AddButton onClick={handleAddTask}>Add Task</AddButton>
+      <TextButton onClick={handleClearClick} style={{ alignSelf: 'center' }}>
+        Clear Completed Task
+      </TextButton>
     </ListLayout>
   );
 };

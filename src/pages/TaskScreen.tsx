@@ -1,5 +1,6 @@
 import React from 'react';
 import useTaskStore from '../hooks/use-task-store';
+import {TextButton} from '../styles/ButtonStyles';
 
 type Props = {};
 
@@ -18,8 +19,8 @@ const TasksScreen: React.FC<Props> = () => {
       {task ? (
         <div>
           <div>{task.label}</div>
-          <button onClick={handleMarkCompleted}>Mark Completed</button>
-          <button onClick={handleClickNextTask}>Next</button>
+          <TextButton onClick={handleMarkCompleted}>Mark Completed</TextButton>
+          <TextButton onClick={handleClickNextTask}>Next</TextButton>
         </div>
       ) : (
         <div> No Task Listed</div>
