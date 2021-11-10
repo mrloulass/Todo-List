@@ -12,5 +12,11 @@ export const ListContainer = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 10px 5px ${colors.black};
   background: ${colors.darkBlue};
-  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 45px 24px;
+`;
+
+export const ListItems = styled.label`
+margin-top: 8px;
 `;

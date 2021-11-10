@@ -1,8 +1,8 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { TodoTask } from '../types';
 import useTaskStore from '../hooks/use-task-store';
-import { ListContainer, ListLayout } from '../styles/ListStyle';
-import {AddButton, TextButton} from '../styles/ButtonStyles';
+import { ListContainer, ListLayout, ListItems } from '../styles/ListStyle';
+import { AddButton, TextButton } from '../styles/ButtonStyles';
 import Input from '../styles/InputStyle';
 import Spacer from '../styles/Spacer';
 
@@ -39,20 +39,22 @@ const List: React.FC<Props> = () => {
     <ListLayout>
       <ListContainer>
         {tasks.map((task) => (
-          <div key={task.id}>
+          <ListItems key={task.id}>
             <input
               type="checkbox"
               checked={task.completed}
               onChange={handleTaskCompleteChange(task)}
-            />{' '}
+            />
             {task.label}
+            <Spacer flex={1}/>
             <button onClick={handleTaskDeleteClick(task)}>Delete</button>
-          </div>
+          </ListItems>
         ))}
       </ListContainer>
-      <Spacer height={30}/>
-        <Input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
-        <AddButton onClick={handleAddTask}>Add Task</AddButton>
+      <Spacer height={30} />
+      <Input value={newTaskLabel} onChange={handleNewTaskLabelChange} />
+      <AddButton onClick={handleAddTask}>Add Task</AddButton>
+      <Spacer height={45} />
       <TextButton onClick={handleClearClick} style={{ alignSelf: 'center' }}>
         Clear Completed Task
       </TextButton>
