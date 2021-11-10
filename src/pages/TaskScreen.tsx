@@ -1,6 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import useTaskStore from '../hooks/use-task-store';
-import {TextButton} from '../styles/ButtonStyles';
+import {TextButton, ReturnButton} from '../styles/ButtonStyles';
 
 type Props = {};
 
@@ -23,7 +24,9 @@ const TasksScreen: React.FC<Props> = () => {
           <TextButton onClick={handleClickNextTask}>Next</TextButton>
         </div>
       ) : (
-        <div> No Task Listed</div>
+        <NavLink to="/list">
+          <ReturnButton>Return to List</ReturnButton>
+        </NavLink>
       )}
     </div>
   );

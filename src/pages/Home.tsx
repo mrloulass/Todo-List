@@ -8,7 +8,7 @@ const Home: React.FC<Props> = () => {
     <div>
       <NavLink to="/list">
         <TextButton className="homeButton">Click to Add Task</TextButton>
-      </NavLink>{' '}
+      </NavLink>
     </div>
   );
 };

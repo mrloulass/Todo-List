@@ -35,6 +35,23 @@ export const AddButton = styled.button`
   }
 `;
 
+export const ReturnButton = styled.button`
+  background: ${colors.mint};
+  color: ${colors.white};
+  border-radius: 10px;
+  box-shadow: 0px 3px 5px 1px ${colors.black};
+  padding: 10px;
+  border: none;
+  align-self: center;
+  margin-top: 10px;
+
+  &:active {
+    color: ${colors.black};
+    box-shadow: 0px 0px 12px 2px ${colors.yellow};
+    border: solid 0px ${colors.darkBlue};
+    background: ${colors.yellow};
+  }
+`;
 
 
 
