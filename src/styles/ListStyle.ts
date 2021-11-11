@@ -18,5 +18,6 @@ export const ListContainer = styled.div`
 `;
 
 export const ListItems = styled.label`
-margin-top: 8px;
+display: flex;
+margin-bottom: 8px;
 `;
