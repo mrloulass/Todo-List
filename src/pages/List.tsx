@@ -46,7 +46,7 @@ const List: React.FC<Props> = () => {
               onChange={handleTaskCompleteChange(task)}
             />
             {task.label}
-            <Spacer flex={1}/>
+            <Spacer flex={1} />
             <button onClick={handleTaskDeleteClick(task)}>Delete</button>
           </ListItems>
         ))}
