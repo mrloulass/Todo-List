@@ -53,5 +53,21 @@ export const ReturnButton = styled.button`
   }
 `;
 
+export const DeleteButton = styled.button`
+  background: ${colors.darkBlue};
+  color: ${colors.white};
+  border: none;
+
+  &:active {
+    color: ${colors.black};
+    box-shadow: 0px 0px 12px 2px ${colors.yellow};
+    border: solid 0px ${colors.darkBlue};
+    background: ${colors.yellow};
+  }
+  &:hover {
+    color: ${colors.pink};
+  }
+`;
+
 
 
