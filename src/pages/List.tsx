@@ -2,9 +2,11 @@ import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { TodoTask } from '../types';
 import useTaskStore from '../hooks/use-task-store';
 import { ListContainer, ListLayout, ListItems } from '../styles/ListStyle';
-import { AddButton, TextButton } from '../styles/ButtonStyles';
+import { AddButton, TextButton, DeleteButton } from '../styles/ButtonStyles';
 import Input from '../styles/InputStyle';
 import Spacer from '../styles/Spacer';
+import { RiDeleteBin2Line } from 'react-icons/ri';
+
 
 type Props = {};
 
@@ -47,7 +49,7 @@ const List: React.FC<Props> = () => {
             />
             {task.label}
             <Spacer flex={1} />
-            <button onClick={handleTaskDeleteClick(task)}>Delete</button>
+            <DeleteButton onClick={handleTaskDeleteClick(task)}> <RiDeleteBin2Line/></DeleteButton>
           </ListItems>
         ))}
       </ListContainer>
