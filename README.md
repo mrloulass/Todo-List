@@ -39,6 +39,8 @@ Building a basic todo list using React, React Hooks, TypeScript, and Styled-Comp
 
 - [Nanoid](https://github.com/ai/nanoid)
 
+- [React Icons](https://react-icons.github.io/react-icons)
+
 ## 🔍 Resources
 
 ### Using React with TypeScript
